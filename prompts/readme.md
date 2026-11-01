@@ -4,11 +4,9 @@ Prompts reutilizáveis (colas) e **CCIA** (Conversas com o Agente) para continui
 
 CCIA **não** substitui `status.md` / `timeline.md`.
 
-**Este repositório-fonte do template:** não gravar arquivos CCIA de conversa aqui. CCIA aplica-se aos **projetos derivados**.
-
 Specs opt-in (incl. personalizar projeto): `specs/optional/`.
 
-## CCIA — transcrição literal por chat (projetos derivados)
+## CCIA — transcrição literal por chat
 
 Objetivo: em outra máquina, o Cursor (sob `@` explícito) recupera **o que foi conversado** sobre o mesmo repo — não um resumo de entrega.
 

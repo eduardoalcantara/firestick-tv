@@ -40,7 +40,7 @@ Em conflito: nível superior prevalece. Se irresolvido → pause e peça esclare
 
 ## Regras de documentação
 
-- `status.md` e `timeline.md` registram pendências e alterações do repositório **final** (projeto derivado). No repositório-fonte do template, não gravar o histórico do template nesses arquivos.
+- `status.md` e `timeline.md` registram pendências e alterações do repositório.
 - Entregas materiais geram relatório em `reports/`.
 - Specs novas usam `spec-template.md`; concluídas vão para `specs/done/`.
 
@@ -67,10 +67,8 @@ Detalhe: `scripts/readme.md`, `core/readme.md`, `core/scripts/readme.md`. UX com
 
 - Alterar `spec-root.md` só com intenção explícita de mudar a arquitetura.
 - `.prompt-status` está **desativado**. Não criar, não ler, não atualizar e não versionar.
-- CCIA (projetos derivados): **1 arquivo por chat**, transcrição **literal** prompt↔resposta (append); **não** é resumo de entrega (`timeline.md` / `status.md`). Formato em `prompts/readme.md`.
+- CCIA: **1 arquivo por chat**, transcrição **literal** prompt↔resposta (append); **não** é resumo de entrega (`timeline.md` / `status.md`). Formato em `prompts/readme.md`.
 - CCIA: **gravar/append** após prompt relevante; **ler** só se o usuário pedir explicitamente.
-- Repositório-fonte deste template: **não** gravar arquivos CCIA de conversa. Isso vale enquanto a pasta raiz contiver `template` no nome. A saída desse modo é o gatilho em `AGENTS.md`.
-- Enquanto `AGENTS.md` tiver a seção `Gatilho — CCIA`, não gravar CCIA nem handoff. Essa seção pergunta uma vez e, conforme a resposta, mantém ou retira as regras.
 - Em Commit+Push exclusivo: não gravar/append CCIA.
 
 ## Regras de scripts (resumo)

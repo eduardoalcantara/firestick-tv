@@ -4,14 +4,14 @@
 
 [NOME DO PROJETO] existe para [PROPÓSITO EM UMA FRASE].
 
-Este repositório é o template. A espinha dorsal já está nos arquivos de regra da raiz (`AGENTS.md` aponta para eles). Novos repositórios nascem pelo GitHub (**Use this template**), não por um gerador à parte.
+A espinha dorsal já está nos arquivos de regra da raiz (`AGENTS.md` aponta para eles).
 
 ## Visão geral
 
 - O projeto é governado pelos documentos da raiz.
 - O agente opera segundo `flow.md`, `rules.md` e `AGENTS.md`.
 - O essencial do produto/sistema vive em `/core` (código e scripts necessários para manter, compilar, rodar e instalar).
-- O progresso do projeto derivado é rastreado em `status.md` e `timeline.md`. No repositório-fonte do template esses arquivos ficam sem histórico do template.
+- O progresso do projeto é rastreado em `status.md` e `timeline.md`.
 
 ## Princípios fundacionais
 
@@ -21,11 +21,11 @@ Este repositório é o template. A espinha dorsal já está nos arquivos de regr
 4. **Formato universal, conteúdo adaptável** — espinha dorsal fixa; interior muda por domínio.
 5. **`/core` é o essencial do produto** — o que bastaria copiar sozinho para continuar a manutenção (alterar, compilar, rodar, gerar instalador), inclusive scripts de produto em `core/scripts/`; e o que se salvaria “no incêndio” se não desse tempo de salvar tudo. Script de repositório fica em `scripts/` na raiz e **não** entra em `/core`.
 6. **Nomenclatura com hífen** — arquivos Markdown de governança na raiz usam `-`, nunca `_`.
-7. **CCIA** — nos projetos derivados: 1 arquivo por chat, transcrição literal prompt↔resposta (append após relevante); não é resumo de entrega (`timeline.md` / `status.md`); ler só sob pedido explícito. No repo-fonte deste template: não gravar CCIA de conversa. Enquanto `AGENTS.md` tiver a seção `Gatilho — CCIA`, não gravar: a seção pergunta uma vez e mantém ou retira as regras. `.prompt-status` está desativado.
+7. **CCIA** — 1 arquivo por chat, transcrição literal prompt↔resposta (append após relevante); não é resumo de entrega (`timeline.md` / `status.md`); ler só sob pedido explícito. `.prompt-status` está desativado.
 
 ## Escopo
 
-- Manter a estrutura documental e operacional do template.
+- Manter a estrutura documental e operacional.
 - Permitir adaptação por domínio (software, hardware, SO, impressão 3D, híbridos).
 - Garantir que o Cursor consiga operar sem ambiguidade sobre regras, validação e documentação.
 
@@ -63,11 +63,11 @@ raiz documental (governança)
 - Não usar `.prompt-status` (desativado).
 - Não ler CCIA/handoff sem pedido explícito do usuário.
 - Em pedido exclusivo de Commit + Push, não gravar/append CCIA.
-- CCIA não substitui `timeline.md` / `status.md`; no repo-fonte do template não gravar CCIA de conversa.
+- CCIA não substitui `timeline.md` / `status.md`.
 - Não colocar o essencial do produto fora de `/core` sem justificativa normativa; scripts essenciais de build/run/installer do produto ficam em `/core`, não em `scripts/` da raiz.
 - `/core` ≠ pasta genérica de “código”: é o mínimo operacional do produto (critérios em `core/readme.md`).
 - Não renomear arquivos de governança da raiz para underscore; manter hífen.
-- No projeto derivado, mudanças relevantes atualizam `status.md` e `timeline.md`. No repositório-fonte do template, não usar esses arquivos para o histórico do template.
+- Mudanças relevantes atualizam `status.md` e `timeline.md`.
 
 ## Critérios de sucesso
 
@@ -80,7 +80,7 @@ O repositório está pronto quando o Cursor responde sem ambiguidade:
 - onde fica o essencial do produto em `/core` (cópia mínima / critério do “incêndio”);
 - como o agente se comporta;
 - como distinguir script de repositório (`scripts/`) de script de produto (`core/scripts/`);
-- como usar CCIA (transcrição literal por chat nos derivados; ler só sob pedido explícito).
+- como usar CCIA (transcrição literal por chat; ler só sob pedido explícito).
 
 ## Conclusão normativa
 

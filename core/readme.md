@@ -1,37 +1,53 @@
-# core/
+# core/ — Núcleo do Produto: Automação Fire TV Stick 4K (Mantis)
 
-Núcleo **essencial** do produto/sistema — o que permite continuar a manutenção se o resto do repositório sumir.
+Núcleo **essencial** do produto/sistema — o que permite realizar o desbloqueio de bootloader (exploit Kamakiri) e a instalação do LineageOS (Android TV) no Amazon Fire TV Stick 4K (`mantis`).
 
 ## Critério de decisão (obrigatório)
 
-Pergunte:
+1. **Cópia mínima:** Se for necessário copiar apenas o essencial para executar o desbloqueio, aplicar o exploit e instalar o sistema operacional na máquina de intervenção (Zorin OS / Ubuntu), basta copiar **apenas `/core`**.
+2. **Incêndio:** Os scripts de injeção, payloads e binários do exploit vivem aqui.
 
-1. **Cópia mínima:** se um dia for preciso copiar só o essencial para continuar alterando código, compilando, rodando e gerando instalador — o que deve bastar? Resposta: **apenas `/core`**. Isso inclui scripts **essenciais** a esses propósitos (build, run, empacote, instalador do produto). Scripts só do repositório (validar estrutura do template, bootstrap de docs, etc.) ficam em `scripts/` na raiz.
-2. **Incêndio:** o que você colocaria debaixo do braço e salvaria se não desse tempo de salvar tudo? Isso vive em `/core`.
+## Estrutura do Produto em `/core`
 
-Se o artefato não for necessário para manter/compilar/rodar/instalar o produto em produção (ou equivalente no domínio), **não** pertence a `/core`.
+```text
+core/
+├── kamakiri_exploit/        # Binários e scripts originais do exploit Kamakiri
+│   ├── bootrom-step.sh      # Handshake e quebra de SLA/DAA na BootROM (BROM)
+│   ├── fastboot-step.sh     # Destravamento de partições e subida do TWRP
+│   └── README.md
+│
+├── payloads/                # Imagens e pacotes zip a serem instalados
+│   ├── lineage-18.1-mantis.zip     # ROM LineageOS Android TV (Mantis)
+│   ├── open_gapps-arm-11.0-pico.zip # Google Apps Pico (opcional)
+│   ├── magisk.zip                  # Root Magisk (opcional)
+│   └── README.md
+│
+├── scripts/                 # Scripts canônicos de automação e orquestração do produto
+│   ├── 01_setup_env.sh      # Setup de dependências, permissões e desativação ModemManager
+│   ├── 02_kamakiri_monitor.sh # Orquestrador de injeção física e fastboot
+│   ├── 03_flash_rom.sh      # Limpeza e instalação da ROM no TWRP via ADB
+│   └── readme.md
+│
+├── scripts_automacao/       # Wrappers de compatibilidade para core/scripts/
+│   ├── 01_setup_env.sh
+│   ├── 02_kamakiri_monitor.sh
+│   └── 03_flash_rom.sh
+│
+├── execucao.log             # Log centralizado de saída gerado pelas execuções
+└── readme.md                # Este documento
+```
 
 ## O que entra
 
-Código, contratos, schemas, migrations do produto, assets necessários ao build/run, firmware, CAD, perfis de SO, modelos 3D, e **scripts essenciais do produto** (sempre que o padrão da tecnologia não exigir outro local).
+- Arquivos do exploit de hardware Kamakiri (`core/kamakiri_exploit/`).
+- Pacotes e imagens de ROMs/GApps/Magisk (`core/payloads/`).
+- Scripts de execução, automação, preparação de ambiente e flash (`core/scripts/`).
+- Log consolidado de execução (`core/execucao.log`).
 
 ## O que não entra
 
-Governança do repositório (raiz: `spec-*`, `rules*`, `flow.md`, `AGENTS.md`), CCIA/colas em `prompts/`, docs de apoio, `reports/`, `resources/` de downloads, e scripts **não essenciais ao produto** em `scripts/` (validação estrutural do repo, automação de template, manutenção documental).
-
-## Exemplos por domínio
-
-| Domínio | Subpastas possíveis |
-|---|---|
-| Software (app único) | `src/`, `tests/`, `api/`, `packages/`, scripts de build/run/installer |
-| Software multi-produto | ver spec opt-in `specs/optional/software-multi-produto.md` → `shared/`, `db/`, `api/`, `web/`, `mobile/` |
-| Hardware | `cad/`, `bom/`, `schematics/`, `firmware/` |
-| Sistema operacional | `profiles/`, `policies/`, `services/` |
-| Impressão 3D | `models/`, `slicing/`, `materials/` |
-| Híbrido | combinação das acima |
-
-## Regra
-
-A governança do repositório fica na raiz; o **produto** (incl. o mínimo operacional) fica em `/core`.
-
-Para sistemas com DB + API + web + mobile: **não** inventar o layout — promover a spec opcional para `specs/to-do/` e seguir o aceite dela.
+- Governança do repositório (raiz: `spec-*`, `rules*`, `flow.md`, `AGENTS.md`).
+- Histórico de chat CCIA em `prompts/`.
+- Documentação de apoio geral em `docs/`.
+- Relatórios de entrega em `reports/`.
+- Scripts exclusivos do repositório em `scripts/` da raiz (validação de árvore, min-tree).

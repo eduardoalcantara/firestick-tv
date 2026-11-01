@@ -1,43 +1,27 @@
 # core/scripts/
 
-Scripts **essenciais do produto** — build, run, empacote, instalador e manutenção operacional do que vive em `/core`.
+Scripts **essenciais do produto** — preparação do ambiente, orquestração da injeção do exploit Kamakiri, monitoramento de hardware e flash de ROM no Fire TV Stick 4K (Mantis).
 
 ## Por que aqui (não em `scripts/` na raiz)
 
 Critérios de `/core` (ver `core/readme.md`):
 
-1. **Cópia mínima** — copiar só `/core` deve bastar para alterar, compilar, rodar e gerar instalador.
-2. **Incêndio** — o que se salvaria se não desse tempo de salvar o resto do repo.
+1. **Cópia mínima** — copiar só `/core` basta para rodar a preparação de ambiente, o exploit e a instalação da ROM no dispositivo.
+2. **Incêndio** — os scripts de intervenção no dispositivo residem aqui.
 
-Scripts que servem só ao **repositório** (validar estrutura do template, bootstrap documental, etc.) ficam em `scripts/` na raiz.
+Scripts que servem só ao **repositório** (como `scripts/validation/validate-structure.*`) ficam em `scripts/` na raiz.
 
-## O que colocar aqui
+## Scripts do Produto
 
-| Tipo | Exemplos (adaptar à stack do projeto) |
-|---|---|
-| Build / run | compilar, testes do produto, subir o app/serviço |
-| Release / pack | gerar artefato de distribuição |
-| Instalador | MSI, deb, rpm, imagem, pacote da plataforma |
-| Manutenção do produto | associação de extensão, serviço, migração operacional |
+| Script | Função | Privilégios |
+|---|---|---|
+| `01_setup_env.sh` | Atualiza repositórios, instala dependências apt (`python3`, `serial`, `usb`, `adb`, `fastboot`, `dos2unix`), desativa `ModemManager` e normaliza quebras de linha com `dos2unix`. | `root` (`sudo`) |
+| `02_kamakiri_monitor.sh` | Orquestra a injeção do exploit Kamakiri: instruções ANSI (amarelo/vermelho) para o curto DAT0, chamada de `bootrom-step.sh`, alerta crítico para soltura do curto, execução de `fastboot-step.sh` e detecção do TWRP via ADB. | `root` (`sudo`) |
+| `03_flash_rom.sh` | Limpa as partições originais do Fire OS (`wipe system`, `data`, `cache`), transfere e instala `lineage-18.1-mantis.zip`, instala pacotes opcionais (`OpenGApps`, `Magisk`) e reinicia o dispositivo via ADB. | `root` (`sudo`) |
 
-Subpastas opcionais (quando fizer sentido): `automation/`, `maintenance/`, `bootstrap/` — sempre com foco no **produto**, não na governança do template.
+## Convenções de Execução
 
-## O que não colocar aqui
-
-- Validação da árvore do template (`validate-structure`, etc.)
-- Automação de docs, CCIA, specs
-- Qualquer script dispensável se só `/core` for copiado
-
-## Convenções
-
-- Seguir `rules-scripts.md` na raiz (input numerado, `--uninstall` quando instalar algo, equivalência `.sh` / `.ps1` quando houver ambos).
-- Descobrir a raiz do **produto** a partir de marcadores do domínio em `/core` (ex.: `package.json`, `Cargo.toml`, `pyproject.toml`, `.sln`) — **não** depender de `spec-root.md` da governança.
-- Documentar nesta tabela os scripts reais do projeto derivado:
-
-| Script | Função |
-|---|---|
-| _(preencher ao criar o produto)_ | |
-
-## Wrappers na raiz (opcional)
-
-No repositório completo, pode existir atalho em `scripts/` da raiz que apenas encaminha para `core/scripts/…`. O canônico continua sendo este diretório.
+- Todos os scripts exigem execução como superusuário (`sudo ./script.sh`), validando o `EUID` no início.
+- Erros não tratados interrompem o fluxo com `set -e`.
+- Todas as saídas são exibidas no terminal e espelhadas simultaneamente para `core/execucao.log`.
+- Se os scripts forem invocados a partir de `core/scripts_automacao/`, wrappers transparentes encaminham a execução para estes scripts em `core/scripts/`.

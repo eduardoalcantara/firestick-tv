@@ -2,18 +2,17 @@
 
 ## Pré-requisitos
 
-- Conta GitHub (para criar o repo a partir do template)
+- Conta GitHub
 - Git
 - Cursor IDE
 - Ferramentas de domínio conforme `tools-linux.md` ou `tools-windows.md`
 
 ## Instalação
 
-1. No GitHub, use **Use this template** (ou selecione este template em **Start with a template**).
-2. Clone o repositório gerado:
+1. Clone o repositório:
 
 ```bash
-git clone <URL_DO_NOVO_REPO>
+git clone <URL_DO_REPO>
 cd <NOME_DO_REPO>
 ```
 
@@ -52,7 +51,7 @@ cd <NOME_DO_REPO>
 
 1. Crie a primeira spec em `specs/to-do/` usando `spec-template.md`.
 2. Peça ao Cursor para seguir `flow.md` e implementar somente o escopo da spec.
-3. Ao final, confira `status.md` / `timeline.md` se material. CCIA: gravar se relevante (projetos derivados); ler só se você pedir. Não use `.prompt-status`.
+3. Ao final, confira `status.md` / `timeline.md` se material. CCIA: gravar se relevante; ler só se você pedir. Não use `.prompt-status`.
 
 ## Solução de problemas
 
