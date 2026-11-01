@@ -1,0 +1,66 @@
+# Única lista da árvore mínima do template.
+# Os validadores (validate-structure.ps1 / .sh) leem só este arquivo.
+# Linha com # ou vazia é ignorada.
+# Caminho com / no final = diretório. Sem / no final = arquivo.
+# Não incluir: spec-project-bootstrap.md, scaffold-repo.*, .prompt-status.
+
+.gitignore
+.cursorignore
+AGENTS.md
+CLAUDE.md
+.gemini/settings.json
+readme.md
+spec-root.md
+flow.md
+rules.md
+rules-scripts.md
+software-development-rules.md
+status.md
+timeline.md
+setup.md
+tools-linux.md
+tools-windows.md
+spec-template.md
+docs/readme.md
+ideas/readme.md
+specs/readme.md
+specs/to-do/readme.md
+specs/done/readme.md
+specs/optional/readme.md
+specs/optional/bootstrap-personalizar-projeto.md
+specs/optional/software-multi-produto.md
+references/readme.md
+scripts/readme.md
+scripts/bootstrap/readme.md
+scripts/validation/readme.md
+scripts/validation/min-tree.txt
+scripts/validation/validate-structure.ps1
+scripts/validation/validate-structure.sh
+scripts/automation/readme.md
+scripts/maintenance/readme.md
+reports/readme.md
+prompts/readme.md
+resources/readme.md
+resources/downloads/.gitkeep
+core/readme.md
+core/scripts/readme.md
+
+docs/
+ideas/
+specs/
+specs/to-do/
+specs/done/
+specs/optional/
+references/
+scripts/
+scripts/bootstrap/
+scripts/validation/
+scripts/automation/
+scripts/maintenance/
+reports/
+prompts/
+resources/
+resources/downloads/
+.gemini/
+core/
+core/scripts/
