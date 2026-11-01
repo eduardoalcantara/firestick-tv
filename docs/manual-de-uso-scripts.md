@@ -1,6 +1,6 @@
 # Manual de Uso: Scripts de Automação do Exploit Kamakiri
-**Dispositivo:** Amazon Fire TV Stick 4K (Codinome: `mantis`)  
-**Ambiente:** Zorin OS 18 Pro / Ubuntu (Bare Metal)  
+**Dispositivo:** Amazon Fire TV Stick 4K (Codinome: `mantis`)
+**Ambiente:** Zorin OS 18 Pro / Ubuntu (Bare Metal)
 **Localização do Produto:** Diretório `/core`
 
 ---
@@ -137,6 +137,8 @@ tail -f core/execucao.log
 ```
 
 ---
+
+<!-- pdf-cli:pagebreak -->
 
 ## 6. Diagnóstico e Resolução de Problemas
 
